@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Crud_Clientes.Negocio</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Crud-Cliente.BancoDeDados\Crud-Cliente.BancoDeDados.csproj" />
+    <ProjectReference Include="..\Crud-Cliente.Entidades\Crud-Cliente.Entidades.csproj" />
+  </ItemGroup>
+
+</Project>

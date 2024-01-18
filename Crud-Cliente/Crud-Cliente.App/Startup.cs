@@ -1,7 +1,10 @@
+using AutoMapper;
+using Crud_Cliente.App.Dtos;
 using Crud_Cliente.BancoDeDados;
 using Crud_Cliente.BancoDeDados.Interfaces;
 using Crud_Cliente.BancoDeDados.Repositorios;
 using Crud_Cliente.Entidades;
+using Crud_Clientes.Negocio.Dtos;
 using Crud_Clientes.Negocio.Interfaces;
 using Crud_Clientes.Negocio.Service;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Crud_Cliente.App {
     public class Startup {
@@ -21,12 +25,15 @@ namespace Crud_Cliente.App {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllersWithViews();
             services.AddScoped<IRepositorio<Cliente>, ClienteRepositorio>();
             services.AddScoped<IRepositorio<Endereco>, EnderecoRepositorio>();
-            services.AddScoped<IService<Cliente>, ClienteServico>();
-            services.AddScoped<IService<Endereco>, EnderecoServico>();
+            services.AddScoped<IService<ClienteDto>, ClienteServico>();
+            services.AddScoped<IService<EnderecoDto>, EnderecoServico>();
+
             services.AddDbContext<Contexto>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +51,7 @@ namespace Crud_Cliente.App {
             app.UseRouting();
 
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllerRoute(

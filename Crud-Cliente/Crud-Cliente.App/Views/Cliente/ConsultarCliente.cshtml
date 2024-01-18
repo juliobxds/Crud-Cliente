@@ -1,0 +1,37 @@
+﻿@model List<ClienteViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Email</th>
+            <th scope="col">Cpf</th>
+            <th scope="col">NomeDaRua</th>
+            <th scope="col">NumeroDaRua</th>
+            <th scope="col">Bairro</th>
+            <th scope ="col">Editar/Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model) {
+        <tr>
+            <th scope="row">@cliente.Id</th>
+            <td>@cliente.Nome</td>
+            <td>@cliente.Celular</td>
+            <td>@cliente.Email</td>
+                <td>@cliente.Cpf</td>
+                <td>@cliente.NomeDaRua</td>
+                <td>@cliente.NumeroDaRua</td>
+                <td>@cliente.Bairro</td>
+                <td>
+                    <a type="button" asp-controller="Cliente" asp-action="EditarCliente" asp-route-id="@cliente.Id" class="btn btn-success">Editar</a>
+                    <a type="button" asp-controller="Cliente" asp-action="ApagarCliente" asp-route-id="@cliente.Id" class="btn btn-danger">Excluir</a>
+
+                </td>
+
+        </tr>
+        }
+    </tbody>
+</table>

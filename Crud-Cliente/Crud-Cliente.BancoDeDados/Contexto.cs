@@ -8,7 +8,6 @@ namespace Crud_Cliente.BancoDeDados {
         {
             
         }
-
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
     }

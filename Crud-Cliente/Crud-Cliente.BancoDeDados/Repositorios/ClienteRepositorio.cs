@@ -1,7 +1,6 @@
 ﻿using Crud_Cliente.BancoDeDados.Interfaces;
 using Crud_Cliente.Entidades;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,9 +20,8 @@ namespace Crud_Cliente.BancoDeDados.Repositorios {
             return obj;
         }
 
-        public async Task<Cliente> Atualizar(int id) {
-
-          var Cliente = await contexto.Clientes.FirstOrDefaultAsync(c => c.Id == id); // fazer validaçoes!! 
+        public async Task<Cliente> Atualizar(Cliente cliente) {
+            var Cliente = await contexto.Clientes.FirstOrDefaultAsync(c => c.Id == cliente.Id); // fazer validaçoes!! 
             return Cliente;
 
         }
@@ -35,13 +33,13 @@ namespace Crud_Cliente.BancoDeDados.Repositorios {
 
 
         public async Task<Cliente> GetId(int id) {
-            var Cliente = await contexto.Clientes.FirstOrDefaultAsync(c => c.Id == id);
+            var Cliente = await contexto.Clientes.Include(x => x.Endereco).FirstOrDefaultAsync(c => c.Id == id);
             return Cliente;
 
         }
 
         public async Task<List<Cliente>> ListarTodos() {
-          return await contexto.Clientes.ToListAsync();
+            return await contexto.Clientes.Include(x => x.Endereco).ToListAsync();
         }
     }
 }

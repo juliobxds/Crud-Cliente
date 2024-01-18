@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Crud_Cliente.Entidades;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Crud_Cliente.BancoDeDados.Interfaces {
@@ -10,7 +11,7 @@ namespace Crud_Cliente.BancoDeDados.Interfaces {
 
         Task<T> Adicionar(T obj);
 
-        Task<T> Atualizar(int id);
+        Task<T> Atualizar(T cliente);
 
         Task<T> Apagar(int id); 
     }

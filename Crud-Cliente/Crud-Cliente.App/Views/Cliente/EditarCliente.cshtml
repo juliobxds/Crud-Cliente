@@ -1,0 +1,38 @@
+﻿@model ClienteViewModel
+<h1>Edicao de Clientes</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="Nome">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Celular</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" asp-for="Celular">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Email</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" asp-for="Email">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Cpf</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" asp-for="Cpf">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">NomeDaRua</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" asp-for="NomeDaRua">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">NumeroDaRua</label>
+        <input type="number" class="form-control" id="exampleInputPassword1" asp-for="NumeroDaRua">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Bairro</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" asp-for="Bairro">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Crud_Cliente.BancoDeDados.Repositorios {
     public class EnderecoRepositorio : IRepositorio<Endereco> {
-
         private readonly Contexto contexto;
 
         public EnderecoRepositorio(Contexto contexto) {
@@ -20,15 +19,18 @@ namespace Crud_Cliente.BancoDeDados.Repositorios {
             return obj;
 
         }
-
         public async Task<Endereco> Apagar(int id) {
             var Endereco = await contexto.Endereco.FirstOrDefaultAsync(c => c.Id == id);
             contexto.Remove(Endereco);
             return Endereco;
         }
+        public async Task<Endereco> Atualizar(Cliente cliente) {
+            var Endereco = await contexto.Endereco.FirstOrDefaultAsync(c => c.Id == cliente.Id); 
+            return Endereco;
+        }
 
-        public async Task<Endereco> Atualizar(int id) {
-            var Endereco = await contexto.Endereco.FirstOrDefaultAsync(c => c.Id == id); // fazer validaçoes!! 
+        public async Task<Endereco> Atualizar(Endereco cliente) {
+            var Endereco = await contexto.Endereco.FirstOrDefaultAsync(c => c.Id == cliente.Id);
             return Endereco;
         }
 
